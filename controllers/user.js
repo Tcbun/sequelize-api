@@ -1,4 +1,4 @@
-const { Op, sequelize, User, Address, Book, Teacher, Student, People } = require('../model');
+const { Op, sequelize, User, Address, Book, Teacher, Student, People,TestReferences } = require('../model');
 class UserCtl {
 
     /**
@@ -352,5 +352,15 @@ class UserCtl {
 
     //查询所有模型的所有嵌套模型
     //User.findAll({ include: [{ all: true, nested: true }]});
+
+    // references
+    //自己试了试，比方说我创建了一个testReferences,我填写一个不想关的表，但是我可以直接引用其他表的信息，就这么个意思，可以不用hasOne,hasMany这样了
+    async userTestReferences(ctx){
+        const result = await TestReferences.create({
+            name:'测试references',
+            user_id:1
+        });
+        ctx.body = { result };
+    }
 }
 module.exports = new UserCtl();

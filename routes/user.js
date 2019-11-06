@@ -5,7 +5,7 @@ const { userCreateOTO,userChangeOTO,userDeleteOTO,userFindOTO,userFindAllOTO,use
     userChangeManyOTM,userDeleteManyOTM,userFindManyOTM,userFindAllBooksOTM,userFindAllUserOTM,userCreateMTM,
     useCreateMTM2,userCreateMTM3,userChangeMTM,userChangeMTM2,userDeleteMTM,userFindAllMTM,userFindAllMTM2,
     userFindAllMTM3,userCreatePeople,userFindMax,userFindMax2,userFindAllRaw,userFindOrder,userFindOrder2,
-    userFindOrderRequiredFalse
+    userFindOrderRequiredFalse,userTestReferences
 } = require('../controllers/user');
 //一对一
 router.get('/userCreateOTO',userCreateOTO);
@@ -38,5 +38,6 @@ router.get('/userFindMax2',userFindMax2);
 router.get('/userFindAllRaw',userFindAllRaw);
 router.get('/userFindOrder',userFindOrder);
 router.get('/userFindOrderRequiredFalse',userFindOrderRequiredFalse);
-
+// references
+router.get('/userTestReferences',userTestReferences);
 module.exports = router;

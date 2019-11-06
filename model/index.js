@@ -110,6 +110,30 @@ People.init({
     modelName:'people',
     freezeTableName:true
 });
+//测试model中的references
+//无限制地执行外键引用
+//有时您可能想引用另一个表，而不添加任何约束或关联。 在这种情况下，您可以手动将参考属性添加到您的模式定义中，并标记它们之间的关系。
+class TestReferences extends Model { };
+TestReferences.init({
+    name:{
+        type:DataTypes.STRING
+    },
+    //外键名
+    user_id:{
+        type:DataTypes.INTEGER,
+        references:{
+            model:User,
+            // User的列名id
+            key:'id'
+        }    
+    }
+},{
+    sequelize,
+    modelName:'testReferences',
+    freezeTableName:true
+})
+
+// User.hasMany(TestReferences);
 
 sequelize.sync()
 // sequelize.sync({ force: true })
@@ -128,5 +152,6 @@ module.exports = {
     Book,
     Teacher,
     Student,
-    People
+    People,
+    TestReferences
 };
